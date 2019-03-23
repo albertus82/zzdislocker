@@ -73,7 +73,7 @@ mkdir -p "$DISLOCKER_MOUNT_FULLPATH"
 mkdir -p "$MYDRIVE_MOUNT_FULLPATH"
 
 printTitle "Detecting Bitlocked disk"
-FDISK="$(fdisk -l | grep 'HPFS/NTFS/exFAT')"
+FDISK="$(fdisk -l | egrep -i --color 'FAT|NTFS|HPFS')"
 ZZDISK="$(echo $FDISK | grep -Po '/\Ksd[a-z][0-9]')"
 
 if [ -z "$ZZDISK" ]; then
